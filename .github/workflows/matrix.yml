@@ -1,0 +1,20 @@
+name: This pipeline will deploy to multiple env
+
+on:
+ workflow_dispatch
+
+jobs:
+  deploy:
+    name: Deploy to multiple environments
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        environment:
+          - dev1
+          - dev2
+          - prod
+
+    steps:
+      - name: Deploy to each environment
+        run: echo "Running deployment on ${{ matrix.environment }}"
